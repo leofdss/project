@@ -16,10 +16,11 @@ import { CrudComponent } from './crud.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { FormDialogComponent } from './form-dialog/form-dialog.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
+import { ConfirmDialogModule } from '../../shared/confirm-dialog/confirm-dialog.module';
+import { FormItemModule } from '../../shared/form-item/form-item.module';
 
 @NgModule({
-  declarations: [CrudComponent, FormDialogComponent, ConfirmDialogComponent],
+  declarations: [CrudComponent, FormDialogComponent],
   imports: [
     CommonModule,
     RouterModule.forChild([
@@ -41,6 +42,8 @@ import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.componen
     MatIconModule,
     MatTooltipModule,
     MatProgressSpinnerModule,
+    ConfirmDialogModule,
+    FormItemModule,
   ],
 })
 export class CrudModule {}

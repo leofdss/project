@@ -30,7 +30,7 @@ export class FormDialogComponent {
     }
   }
 
-  onNoClick(): void {
+  cancel(): void {
     this.dialogRef.close();
   }
 }

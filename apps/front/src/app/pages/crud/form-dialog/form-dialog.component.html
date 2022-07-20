@@ -1,17 +1,8 @@
 <h1 mat-dialog-title></h1>
 <div mat-dialog-content>
-  <form [formGroup]="form">
-    <mat-form-field>
-      <mat-label>{{ 'name' | translate }}</mat-label>
-      <input formControlName="name" matInput />
-    </mat-form-field>
-    <mat-form-field>
-      <mat-label>{{ 'age' | translate }}</mat-label>
-      <input formControlName="age" type="number" matInput />
-    </mat-form-field>
-  </form>
-</div>
-<div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">{{ 'cancel' | translate }}</button>
-  <button mat-button (click)="save()">{{ 'save' | translate }}</button>
+  <project-form-item
+    [form]="form"
+    (save)="save()"
+    (cancel)="cancel()"
+  ></project-form-item>
 </div>

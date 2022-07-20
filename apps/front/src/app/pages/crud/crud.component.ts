@@ -10,7 +10,7 @@ import { Item } from '@project/api-interfaces';
 import { Subscription } from 'rxjs';
 import { AppActions } from '../../core/store/app.actions';
 import { AppState } from '../../core/store/app.state';
-import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
+import { ConfirmDialogComponent } from '../../shared/confirm-dialog/confirm-dialog.component';
 import { FormDialogComponent } from './form-dialog/form-dialog.component';
 
 @Component({
