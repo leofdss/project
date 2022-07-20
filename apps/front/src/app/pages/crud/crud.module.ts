@@ -10,6 +10,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { CrudComponent } from './crud.component';
 import { TranslateModule } from '@ngx-translate/core';
@@ -39,6 +40,7 @@ import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.componen
     MatTableModule,
     MatIconModule,
     MatTooltipModule,
+    MatProgressSpinnerModule,
   ],
 })
 export class CrudModule {}

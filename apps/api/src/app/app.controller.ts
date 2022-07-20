@@ -8,7 +8,7 @@ import {
   Put,
 } from '@nestjs/common';
 
-import { Item, Message } from '@project/api-interfaces';
+import { Item, Message, Resp } from '@project/api-interfaces';
 
 import { AppService } from './app.service';
 
@@ -22,12 +22,12 @@ export class AppController {
   }
 
   @Post()
-  async create(@Body() item: Item) {
+  async create(@Body() item: Item): Promise<Item> {
     return await this.appService.create(item);
   }
 
   @Put()
-  async update(@Body() item: Item) {
+  async update(@Body() item: Item): Promise<Item> {
     return await this.appService.update(item);
   }
 
@@ -37,7 +37,8 @@ export class AppController {
   }
 
   @Delete('/:uuid')
-  async delete(@Param('uuid') uuid: string) {
-    return await this.appService.delete(uuid);
+  async delete(@Param('uuid') uuid: string): Promise<Resp> {
+    await this.appService.delete(uuid);
+    return { result: 'ok' };
   }
 }
