@@ -1,5 +1,5 @@
 export interface Item {
-  uuid?: number;
+  uuid?: string;
   name: string;
   age: number;
 }
