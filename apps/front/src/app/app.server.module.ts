@@ -3,14 +3,14 @@ import {
   ServerModule,
   ServerTransferStateModule,
 } from '@angular/platform-server';
-import { ServerStateInterceptor } from './core/providers/server-state-interceptor';
-
-import { AppModule } from './app.module';
-import { AppComponent } from './app.component';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { translateServerLoaderFactory } from './core/providers/translate-server.loader';
 import { TransferState } from '@angular/platform-browser';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+
+import { ServerStateInterceptor } from './core/providers/server-state-interceptor';
+import { AppModule } from './app.module';
+import { AppComponent } from './app.component';
+import { translateServerLoaderFactory } from './core/providers/translate-server.loader';
 
 export const ServerStateProvider: Provider = {
   provide: HTTP_INTERCEPTORS,
