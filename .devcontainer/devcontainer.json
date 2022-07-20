@@ -26,6 +26,9 @@
 		"[scss]": {
 			"editor.defaultFormatter": "esbenp.prettier-vscode"
 		},
+		"[jsonc]": {
+			"editor.defaultFormatter": "esbenp.prettier-vscode"
+		},
 		"editor.formatOnSave": true,
 		"editor.codeActionsOnSave": {
 			"source.fixAll.eslint": true, // For ESLint
@@ -40,8 +43,11 @@
 		"vscode": {
 			// Add the IDs of extensions you want installed when the container is created.
 			"extensions": [
-				"dbaeumer.vscode-eslint",
-				"esbenp.prettier-vscode"
+				"angular.ng-template",
+				"nrwl.angular-console",
+				"esbenp.prettier-vscode",
+				"firsttris.vscode-jest-runner",
+				"dbaeumer.vscode-eslint"
 			]
 		}
 	},

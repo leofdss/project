@@ -8,3 +8,5 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:
 sed -i 's/plugins=(git)/plugins=(git docker docker-compose node npm yarn zsh-autosuggestions zsh-syntax-highlighting)/' ~/.zshrc
 
 sudo usermod -s /usr/bin/zsh $(whoami)
+
+yarn
