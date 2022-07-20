@@ -1,5 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Actions, concatLatestFrom, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import {
@@ -9,6 +10,7 @@ import {
   map,
   mergeMap,
   of,
+  tap,
 } from 'rxjs';
 
 import { AppService } from '../services/app.service';
@@ -20,8 +22,24 @@ export class AppEffects {
   constructor(
     private actions$: Actions,
     private store: Store<{ appState: AppState }>,
-    private appService: AppService
+    private appService: AppService,
+    private snackBar: MatSnackBar
   ) {}
+
+  error$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(
+          AppActions.deleteFailed,
+          AppActions.listFailed,
+          AppActions.saveFailed
+        ),
+        tap((action) => {
+          this.snackBar.open(action.error, '❌');
+        })
+      ),
+    { dispatch: false }
+  );
 
   save$ = createEffect(() =>
     this.actions$.pipe(

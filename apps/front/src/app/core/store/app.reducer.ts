@@ -68,7 +68,7 @@ export const AppReducer = createReducer(
   on(AppActions.listFailed, (state, action) => ({
     ...state,
     list: {
-      loading: true,
+      loading: false,
       error: action.error,
       items: state.list.items,
     },

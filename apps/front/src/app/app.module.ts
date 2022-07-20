@@ -20,6 +20,7 @@ import localeEs from '@angular/common/locales/es';
 import localePt from '@angular/common/locales/pt';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { EffectsModule } from '@ngrx/effects';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { translateBrowserLoaderFactory } from './core/providers/translate-browser.loader';
 import { AppReducer } from './core/store/app.reducer';
@@ -54,6 +55,7 @@ registerLocaleData(localeEn);
     HttpClientModule,
     BrowserAnimationsModule,
     BrowserTransferStateModule,
+    MatSnackBarModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

@@ -16,6 +16,10 @@ export class AppService {
     return this.http.post<Item>('', item);
   }
 
+  getOne(uuid: string): Observable<Item> {
+    return this.http.get<Item>('/' + uuid);
+  }
+
   list(search: string): Observable<Item[]> {
     return this.http.get<Item[]>('', {
       params: new HttpParams({ fromObject: { search } }),

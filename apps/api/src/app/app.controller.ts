@@ -3,23 +3,19 @@ import {
   Controller,
   Delete,
   Get,
+  NotFoundException,
   Param,
   Post,
   Put,
 } from '@nestjs/common';
 
-import { Item, Message, Resp } from '@project/api-interfaces';
+import { Item, Resp } from '@project/api-interfaces';
 
 import { AppService } from './app.service';
 
 @Controller()
 export class AppController {
   constructor(private readonly appService: AppService) {}
-
-  @Get('hello')
-  getData(): Message {
-    return this.appService.getData();
-  }
 
   @Post()
   async create(@Body() item: Item): Promise<Item> {
@@ -34,6 +30,15 @@ export class AppController {
   @Get()
   async list(): Promise<Item[]> {
     return await this.appService.list();
+  }
+
+  @Get('/:uuid')
+  async getOne(@Param('uuid') uuid: string) {
+    const result = await this.appService.getOne(uuid);
+    if (result) {
+      return result;
+    }
+    throw new NotFoundException();
   }
 
   @Delete('/:uuid')
