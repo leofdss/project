@@ -4,9 +4,7 @@ import {
   BrowserTransferStateModule,
   TransferState,
 } from '@angular/platform-browser';
-
 import { AppComponent } from './app.component';
-import { NxWelcomeComponent } from './nx-welcome.component';
 import {
   HttpClient,
   HttpClientModule,
@@ -14,18 +12,20 @@ import {
 } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSliderModule } from '@angular/material/slider';
-import { BrowserStateInterceptor } from './core/providers/browser-state-interceptor';
 import { MATERIAL_SANITY_CHECKS } from '@angular/material/core';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { registerLocaleData } from '@angular/common';
-
-import { Action, ActionReducer, MetaReducer, StoreModule } from '@ngrx/store';
-
+import { StoreModule } from '@ngrx/store';
 import localeEn from '@angular/common/locales/en';
 import localeEs from '@angular/common/locales/es';
 import localePt from '@angular/common/locales/pt';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { EffectsModule } from '@ngrx/effects';
+
 import { translateBrowserLoaderFactory } from './core/providers/translate-browser.loader';
+import { AppReducer } from './core/store/app.reducer';
+import { AppEffects } from './core/store/app.effects';
+import { BrowserStateInterceptor } from './core/providers/browser-state-interceptor';
 
 export const BrowserStateProvider: Provider = {
   provide: HTTP_INTERCEPTORS,
@@ -48,7 +48,7 @@ registerLocaleData(localeEs);
 registerLocaleData(localeEn);
 
 @NgModule({
-  declarations: [AppComponent, NxWelcomeComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     HttpClientModule,
@@ -62,6 +62,10 @@ registerLocaleData(localeEn);
         deps: [HttpClient, TransferState],
       },
     }),
+    StoreModule.forRoot({
+      appState: AppReducer,
+    }),
+    EffectsModule.forRoot([AppEffects]),
   ],
   providers: [BrowserStateProvider, SanityChecks, Appearance],
   bootstrap: [AppComponent],
