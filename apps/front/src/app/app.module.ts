@@ -76,6 +76,11 @@ registerLocaleData(localeEn);
         loadChildren: () =>
           import('./pages/crud/crud.module').then((e) => e.CrudModule),
       },
+      {
+        path: 'form',
+        loadChildren: () =>
+          import('./pages/form/form.module').then((e) => e.FormModule),
+      },
     ]),
   ],
   providers: [BrowserStateProvider, SanityChecks, Appearance],
