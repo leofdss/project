@@ -6,6 +6,7 @@ import { ConfirmDialogModule } from '../../shared/confirm-dialog/confirm-dialog.
 
 import { FormItemModule } from '../../shared/form-item/form-item.module';
 import { FormDeactivateGuard } from './form-deactivate.guard';
+import { FormResolverGuard } from './form-resolve.guard';
 import { FormComponent } from './form.component';
 
 @NgModule({
@@ -14,8 +15,9 @@ import { FormComponent } from './form.component';
     CommonModule,
     RouterModule.forChild([
       {
-        path: '',
+        path: ':uuid',
         component: FormComponent,
+        resolve: [FormResolverGuard],
         canDeactivate: [FormDeactivateGuard],
         children: [],
       },
@@ -24,6 +26,6 @@ import { FormComponent } from './form.component';
     MatDialogModule,
     ConfirmDialogModule,
   ],
-  providers: [FormDeactivateGuard],
+  providers: [FormDeactivateGuard, FormResolverGuard],
 })
 export class FormModule {}

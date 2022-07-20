@@ -10,4 +10,11 @@
 </form>
 
 <button mat-button (click)="cancel.emit()">{{ 'cancel' | translate }}</button>
-<button mat-button (click)="save.emit()">{{ 'save' | translate }}</button>
+<button mat-button (click)="save.emit()" [disabled]="loading">
+  <ng-container *ngIf="!loading">
+    {{ 'save' | translate }}
+  </ng-container>
+  <ng-container *ngIf="loading">
+    <mat-spinner [diameter]="20"></mat-spinner>
+  </ng-container>
+</button>

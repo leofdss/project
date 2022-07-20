@@ -37,6 +37,10 @@ export class AppService {
     return item;
   }
 
+  async getOne(uuid: string): Promise<Item | undefined> {
+    return this.database.find((e) => e.uuid === uuid);
+  }
+
   async list(): Promise<Item[]> {
     delay(1000);
     return this.database;

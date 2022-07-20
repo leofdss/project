@@ -19,6 +19,7 @@ export class FormItemComponent {
     name: FormControl<string | null | undefined>;
     age: FormControl<number | null | undefined>;
   }>;
+  @Input() loading?: boolean;
 
   @Output() cancel = new EventEmitter<void>();
   @Output() save = new EventEmitter<void>();
