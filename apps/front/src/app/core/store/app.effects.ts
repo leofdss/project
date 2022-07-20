@@ -37,6 +37,13 @@ export class AppEffects {
     )
   );
 
+  saveSuccess$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(AppActions.saveSuccess),
+      map(() => AppActions.list())
+    )
+  );
+
   search$ = createEffect(() =>
     this.actions$.pipe(
       ofType(AppActions.search),
@@ -72,6 +79,13 @@ export class AppEffects {
           )
         )
       )
+    )
+  );
+
+  deleteSuccess$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(AppActions.deleteSuccess),
+      map(() => AppActions.list())
     )
   );
 }

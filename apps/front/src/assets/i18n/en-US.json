@@ -1,3 +1,9 @@
 {
-  "add": "Add"
+  "add": "Add",
+  "name": "Name",
+  "age": "Age",
+  "edit": "Edit",
+  "confirm": "Confirm",
+  "cancel": "Cancel",
+  "save": "Save"
 }

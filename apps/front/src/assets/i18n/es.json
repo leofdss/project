@@ -1,3 +1,9 @@
 {
-  "add": "Agregar"
+  "add": "Agregar",
+  "name": "Nombre",
+  "age": "Años",
+  "edit": "Editar",
+  "confirm": "Confirmar",
+  "cancel": "Cancelar",
+  "save": "Ahorrar"
 }
