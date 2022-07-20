@@ -1912,6 +1912,10 @@
   dependencies:
     tslib "^2.0.0"
 
+"@ngrx/store-devtools@ngrx/store-devtools":
+  version "3.2.4"
+  resolved "https://codeload.github.com/ngrx/store-devtools/tar.gz/a08f7366ef16d1b470f7a8b2aa73c341ea5116b1"
+
 "@ngrx/store@^14.0.2":
   version "14.0.2"
   resolved "https://registry.yarnpkg.com/@ngrx/store/-/store-14.0.2.tgz#f9ab5fd68ea219aeb39276a9ba0e3e24b20e39aa"

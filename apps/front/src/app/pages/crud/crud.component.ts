@@ -65,7 +65,7 @@ export class CrudComponent implements OnInit, OnDestroy {
     );
   }
 
-  delete(uuid: string) {
+  deleteItem(uuid: string) {
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       width: '250px',
     });

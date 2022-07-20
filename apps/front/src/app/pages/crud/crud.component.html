@@ -1,38 +1,59 @@
 <button mat-flat-button color="primary" (click)="add()">
   {{ 'add' | translate }}
 </button>
-
 <ng-container *ngIf="appState$ | async as appState">
-  <table mat-table [dataSource]="appState.list.items" class="mat-elevation-z8">
-    <!-- Name Column -->
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef>{{ 'name' | translate }}</th>
-      <td mat-cell *matCellDef="let element">{{ element.name }}</td>
-    </ng-container>
+  <div class="container mat-elevation-z8">
+    <div
+      class="loading-shade"
+      *ngIf="
+        appState.list.loading ||
+        appState.delete.loading ||
+        appState.save.loading
+      "
+    >
+      <mat-spinner></mat-spinner>
+    </div>
 
-    <!-- Age Column -->
-    <ng-container matColumnDef="age">
-      <th mat-header-cell *matHeaderCellDef>{{ 'age' | translate }}</th>
-      <td mat-cell *matCellDef="let element">{{ element.age }}</td>
-    </ng-container>
+    <div class="table-container">
+      <table mat-table [dataSource]="appState.list.items">
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef>{{ 'name' | translate }}</th>
+          <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+        </ng-container>
 
-    <!-- Buttons Column -->
-    <ng-container matColumnDef="buttons">
-      <th mat-header-cell *matHeaderCellDef></th>
-      <td mat-cell *matCellDef="let element">
-        <div class="buttons">
-          <button
-            mat-icon-button
-            matTooltip="{{ 'edit' | translate }}"
-            (click)="update(element)"
-          >
-            <mat-icon>edit</mat-icon>
-          </button>
-        </div>
-      </td>
-    </ng-container>
+        <!-- Age Column -->
+        <ng-container matColumnDef="age">
+          <th mat-header-cell *matHeaderCellDef>{{ 'age' | translate }}</th>
+          <td mat-cell *matCellDef="let element">{{ element.age }}</td>
+        </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-  </table>
+        <!-- Buttons Column -->
+        <ng-container matColumnDef="buttons">
+          <th mat-header-cell *matHeaderCellDef></th>
+          <td mat-cell *matCellDef="let element">
+            <div class="buttons">
+              <button
+                mat-icon-button
+                matTooltip="{{ 'edit' | translate }}"
+                (click)="update(element)"
+              >
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button
+                mat-icon-button
+                matTooltip="{{ 'delete' | translate }}"
+                (click)="deleteItem(element.uuid)"
+              >
+                <mat-icon>delete</mat-icon>
+              </button>
+            </div>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+    </div>
+  </div>
 </ng-container>
