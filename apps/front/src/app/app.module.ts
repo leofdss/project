@@ -11,7 +11,6 @@ import {
   HTTP_INTERCEPTORS,
 } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatSliderModule } from '@angular/material/slider';
 import { MATERIAL_SANITY_CHECKS } from '@angular/material/core';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { registerLocaleData } from '@angular/common';
@@ -26,6 +25,7 @@ import { translateBrowserLoaderFactory } from './core/providers/translate-browse
 import { AppReducer } from './core/store/app.reducer';
 import { AppEffects } from './core/store/app.effects';
 import { BrowserStateInterceptor } from './core/providers/browser-state-interceptor';
+import { RouterModule } from '@angular/router';
 
 export const BrowserStateProvider: Provider = {
   provide: HTTP_INTERCEPTORS,
@@ -53,7 +53,6 @@ registerLocaleData(localeEn);
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     HttpClientModule,
     BrowserAnimationsModule,
-    MatSliderModule,
     BrowserTransferStateModule,
     TranslateModule.forRoot({
       loader: {
@@ -66,6 +65,18 @@ registerLocaleData(localeEn);
       appState: AppReducer,
     }),
     EffectsModule.forRoot([AppEffects]),
+    RouterModule.forRoot([
+      {
+        path: '',
+        redirectTo: 'crud',
+        pathMatch: 'full',
+      },
+      {
+        path: 'crud',
+        loadChildren: () =>
+          import('./pages/crud/crud.module').then((e) => e.CrudModule),
+      },
+    ]),
   ],
   providers: [BrowserStateProvider, SanityChecks, Appearance],
   bootstrap: [AppComponent],

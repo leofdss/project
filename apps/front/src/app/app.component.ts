@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Message } from '@project/api-interfaces';
+import { Store } from '@ngrx/store';
+import { AppState } from './core/store/app.state';
 
 @Component({
   selector: 'project-root',
@@ -8,6 +8,5 @@ import { Message } from '@project/api-interfaces';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  hello$ = this.http.get<Message>('/hello');
-  constructor(private http: HttpClient) {}
+  constructor(private store: Store<{ appState: AppState }>) {}
 }
