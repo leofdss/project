@@ -10,7 +10,7 @@ import { MatSliderModule } from '@angular/material/slider';
 @NgModule({
   declarations: [AppComponent, NxWelcomeComponent],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     HttpClientModule,
     BrowserAnimationsModule,
     MatSliderModule,
